@@ -35,8 +35,26 @@ class MovieNotesController {
   }
 
   async index(request, response) {
+    const { title, user_id, tags } = request.query;
 
-  }
+    let notes;
+
+    if(tags) {
+      const filterTags = tags.split(',').map(tag => tag.trim())
+    }
+
+    movie_notes = await knex("tags")
+    .select([
+      "movie_notes.id",
+      "movie_notes.title",
+      "movie_notes.user_id"
+    ])
+    .where("movie_notes.user_id", user_id)
+    .whereLike("movie_notes.title", `%${title}%`)
+    .whereIn("name", filterTags)
+    .innerJoin("movie_notes", "movie_notes.id", "tags.note_id")
+    .orderBy("movie_notes.title")
+  } 
 }
 
 module.exports = MovieNotesController;
