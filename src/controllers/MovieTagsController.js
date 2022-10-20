@@ -1,17 +1,13 @@
 const knex = require("../database/knex")
 
 class MovieTagsController {
-  async create(request, response) {
-    const { title, description, rating } = request.body;
-    const { user_id, note_id } = request.params;
+  async index(request, response) {
+    const { user_id } = request.params;
     
-    const tag_id = await knex("movie_tags").insert({
-      title,
-      user_id,
-      note_id
-    });
+    const tags = await knex("tags")
+    .where({ user_id });
 
-    response.json();
+    return response.json(tags);
   }
 }
 
