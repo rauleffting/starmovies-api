@@ -14,7 +14,7 @@ const usersController = new UsersController();
 const userAvatarController = new UserAvatarController();
 
 usersRoutes.post("/", usersController.create);
-usersRoutes.put("/:id", ensureAuthentication, usersController.update);
+usersRoutes.put("/", ensureAuthentication, usersController.update);
 usersRoutes.patch("/avatar", ensureAuthentication, upload.single("avatar"), userAvatarController.update)
 
 module.exports = usersRoutes;

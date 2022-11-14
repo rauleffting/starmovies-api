@@ -8,7 +8,6 @@ class UsersController {
     const { name, email, password } = request.body;
 
     const database = await sqliteConnection()
-    // o get serve para buscar informações.
     const checkUserExists = await database.get("SELECT * FROM users WHERE email = (?)", [email]);
 
     if(checkUserExists) {
@@ -39,7 +38,7 @@ class UsersController {
     if(userWithUpdatedEmail && userWithUpdatedEmail.id !== user.id) {
       throw new AppError("Este e-mail já está em uso.")
     }
-    // se existir conteúdo dentro de name, use este, se não existir, utiliza user.name
+    
     user.name = name ?? user.name;
     user.email = email ?? user.email;
 
