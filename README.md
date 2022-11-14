@@ -5,7 +5,7 @@ Uma aplicação completa com Reactjs e Node, em que o usuário pode cadastrar se
 Link para acessar o código [Front-end](https://github.com/rauleffting/starmovies)!
 
 Tecnologias utilizadas no Back-end:
-Express
-NodeJS
-SQLite (SQL)
-Knex.js
+- Express
+- NodeJS
+- SQLite (SQL)
+- Knex.js
